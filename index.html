@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Driven Viral Cultural Moments | Proposal for Oracle</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Roboto+Flex:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            background-color: #07070a; /* Slightly adjusted dark background */
+            color: rgba(255,255,255,0.9); /* Default text color */
+        }
+
+        .roboto-flex {
+            font-family: 'Roboto Flex', sans-serif;
+        }
+
+        .presentation-container {
+            scroll-snap-type: y mandatory;
+            overflow-y: scroll;
+            height: 100vh;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .presentation-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .slide {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 4rem 2rem;
+            text-align: center;
+            position: relative; /* Establishes stacking context */
+            overflow: hidden;
+            scroll-snap-align: start;
+        }
+
+        .slide::before { /* For animated gradient background */
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: 180% 180%; /* Controls the "zoom" of the gradient for animation */
+            animation: subtleGradientShift 25s ease infinite alternate;
+            z-index: 1; /* Behind slide-content and main image if image has higher z-index */
+        }
+        
+        /* Apply actual gradients to the ::before pseudo-elements */
+        .bg-oracle-main-gradient::before { background: linear-gradient(135deg, #0A141E 0%, #14283C 50%, #1F3C5A 100%); } /* Darker, more refined blue */
+        .bg-fashion-gradient::before { background: linear-gradient(135deg, #581C87 0%, #C31A5B 50%, #EE5A85 100%); } /* Richer fashion gradient */
+        .bg-amazon-gradient::before { background: linear-gradient(135deg, #1A4D2E 0%, #2D6A4F 50%, #438A5E 100%); } /* Deeper forest greens */
+        .bg-neutral-gradient::before { background: linear-gradient(135deg, #1E293B 0%, #334155 100%); } /* Sophisticated dark grey */
+        .bg-thankyou-gradient::before { background: linear-gradient(135deg, #050505 0%, #111111 100%); } /* Very dark, almost black */
+
+        /* Fallback solid background for the slide itself, in case ::before fails or for base color */
+        .bg-oracle-main-gradient,
+        .bg-fashion-gradient,
+        .bg-amazon-gradient,
+        .bg-neutral-gradient,
+        .bg-thankyou-gradient {
+            background-color: #07070a; /* Fallback to body background */
+        }
+
+
+        @keyframes subtleGradientShift {
+            0% { background-position: 0% 30%; }
+            100% { background-position: 100% 70%; }
+        }
+
+        .slide-content {
+            max-width: 1024px;
+            width: 100%;
+            position: relative;
+            z-index: 10; /* Above the ::before pseudo-element and slide image if present */
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInContent 0.8s 0.2s ease-out forwards; /* Added slight delay */
+        }
+
+        @keyframes fadeInContent {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .card {
+            background-color: rgba(25, 28, 38, 0.65); /* Darker, less transparent card */
+            backdrop-filter: blur(12px);
+            border-radius: 1.25rem; /* Slightly smaller radius */
+            padding: 2rem 2.5rem; /* More horizontal padding */
+            margin-top: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.12); /* More subtle border */
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.35); /* Adjusted shadow */
+        }
+
+        .section-supertitle {
+            font-size: 0.9rem;
+            font-weight: 600; /* Semi-bold */
+            text-transform: uppercase;
+            letter-spacing: 0.1em; /* Adjusted spacing */
+            margin-bottom: 0.75rem;
+            color: rgba(255,255,255,0.75);
+        }
+
+        /* .presentation-main-headline class is no longer used for Slide 2 */
+
+        .section-title {
+            font-family: 'Roboto Flex', sans-serif;
+            font-size: 3rem; /* Slightly adjusted */
+            font-weight: 800; /* Bolder */
+            margin-bottom: 1.25rem;
+            line-height: 1.15;
+            color: rgba(255,255,255,0.95);
+        }
+        
+        .title-event {
+            font-size: 0.9em; /* Relative to parent */
+            font-weight: 600; /* Semi-bold */
+            display: block;
+            color: rgba(255,255,255,0.85);
+            margin-bottom: 0.3rem;
+        }
+        
+        .title-concept {
+            font-size: 1.15em; /* Emphasize concept more */
+            font-weight: 800; /* Bolder */
+            display: block;
+            color: #FF453A; /* Brighter Oracle Red */
+        }
+
+        .title-impact { /* New style for the third line of Fashion Week title */
+            font-size: 0.8em;
+            font-weight: 500;
+            display: block;
+            color: rgba(255,255,255,0.8);
+            margin-top: 0.25rem; /* Add some space above */
+        }
+
+
+        .slide-header {
+            font-size: 1.1rem;
+            font-weight: 500; /* Medium weight */
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .section-subtitle {
+            font-size: 1.4rem; /* Adjusted size */
+            font-weight: 300; /* Light weight */
+            margin-bottom: 2.5rem;
+            color: rgba(255,255,255,0.9);
+            max-width: 750px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+
+        .content-text {
+            font-size: 1.15rem; /* Slightly smaller for better density */
+            line-height: 1.75; /* Increased for readability */
+            margin-bottom: 1.25rem;
+            color: rgba(255,255,255,0.85);
+        }
+        .content-text.text-2xl { /* For specific impact statements */
+            font-size: 1.5rem; /* Tailwind's 2xl is 1.5rem */
+            color: rgba(255,255,255,0.9);
+        }
+
+
+        .highlight-oracle {
+            color: #FF453A; /* Brighter Oracle Red */
+            font-weight: 600; /* Semi-bold */
+        }
+
+        .highlight-concept {
+            color: #00CFD4; /* Brighter Concept highlight */
+            font-weight: 500; /* Medium */
+        }
+
+        .logo-oracle-cover { /* For the main Oracle logo on the first slide */
+            height: 4.5rem; 
+            filter: brightness(0) invert(1);
+        }
+
+        .logo-oracle-global {
+            position: absolute;
+            top: 1.75rem; /* Adjusted position */
+            left: 1.75rem;
+            height: 2.25rem; /* Slightly smaller */
+            filter: brightness(0) invert(1);
+            z-index: 20; /* Ensure it's above the slide background/image */
+        }
+
+        .logo-allenby-cover {
+            height: 5.5rem; /* Slightly adjusted */
+            filter: brightness(0) invert(1);
+        }
+
+        .list-disc {
+            text-align: left;
+            margin-left: 1.5rem; /* Standard indent */
+            list-style-type: disc;
+            color: rgba(255,255,255,0.85);
+        }
+
+        .list-disc li {
+            margin-bottom: 1rem; /* Space between list items */
+            padding-left: 0.5rem; /* Space after disc */
+        }
+
+        @media (max-width: 768px) {
+            .slide {
+                padding: 3rem 1rem; /* Adjusted padding for smaller screens */
+            }
+            /* .presentation-main-headline adjustments might not be needed if it's only on slide 2 and that's now an image */
+            .section-title {
+                font-size: 2.2rem; 
+            }
+            .title-event {
+                font-size: 0.85em;
+            }
+            .title-concept {
+                font-size: 1.1em;
+            }
+            .title-impact {
+                font-size: 0.75em;
+            }
+            .slide-header {
+                font-size: 0.95rem;
+                margin-bottom: 1.25rem;
+            }
+            .section-subtitle {
+                font-size: 1.15rem;
+                margin-bottom: 2rem;
+            }
+            .content-text {
+                font-size: 1.05rem; /* Adjusted for mobile */
+                line-height: 1.65;
+            }
+            .content-text.text-2xl {
+                font-size: 1.25rem;
+            }
+            .card {
+                padding: 1.5rem;
+                margin-top: 1.5rem;
+                border-radius: 1rem;
+            }
+            .logo-oracle-cover {
+                height: 3.5rem;
+            }
+            .logo-oracle-global {
+                top: 1rem;
+                left: 1rem;
+                height: 2rem;
+            }
+            .logo-allenby-cover {
+                height: 4.5rem;
+            }
+            .list-disc {
+                margin-left: 1rem;
+            }
+            .list-disc li {
+                margin-bottom: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body class="text-white">
+
+    <div class="presentation-container">
+
+        <section id="slide1" class="slide bg-neutral-gradient">
+            <div class="slide-content flex flex-col justify-center items-center h-full">
+                <img src="https://www.oracle.com/a/ocom/img/oracle-logo.svg" alt="Oracle Logo" class="logo-oracle-cover mb-10">
+                <img src="https://raw.githubusercontent.com/etaynaor/beza/main/images/logo-allenby-01.png" alt="Allenby Logo" class="logo-allenby-cover">
+            </div>
+        </section>
+
+        <section id="slide2" class="slide bg-oracle-main-gradient p-0">
+            <img src="https://www.oracle.com/a/ocom/img/oracle-logo.svg" alt="Oracle Logo" class="logo-oracle-global">
+            <img src="https://github.com/etaynaor/beza/blob/main/1.png?raw=true" alt="AI Driven Viral Cultural Moments" class="absolute inset-0 w-full h-full object-cover" style="z-index: 5;">
+        </section>
+
+        <section id="slide3" class="slide bg-fashion-gradient">
+            <img src="https://www.oracle.com/a/ocom/img/oracle-logo.svg" alt="Oracle Logo" class="logo-oracle-global">
+            <div class="slide-content">
+                <h2 class="roboto-flex section-title leading-tight">
+                    <span class="title-event">Fashion Week 2025 –</span>
+                    <span class="title-concept">AI Capsule Collection:</span>
+                    <span class="title-impact">Revolutionising the Fashion Industry</span>
+                </h2>
+            </div>
+        </section>
+
+        <section id="slide4" class="slide bg-fashion-gradient">
+            <img src="https://www.oracle.com/a/ocom/img/oracle-logo.svg" alt="Oracle Logo" class="logo-oracle-global">
+            <div class="slide-content">
+                <p class="slide-header">Fashion Week 2025 • AI Capsule Collection</p>
+                <div class="card">
+                    <h3 class="roboto-flex text-2xl font-semibold mb-4 text-left text-gray-100">Concept</h3>
+                    <p class="content-text text-left">
+                        During the <span class="highlight-concept">landmark fashion weeks of September 2025</span> — across 
+                        <span class="highlight-oracle">New York, London, Milan, and Paris</span> — an 
+                        AI trained on the entire arc of fashion history will 
+                        <span class="highlight-concept">decode</span> the season’s most vital aesthetic signals 
+                        from the runway and the street.
+                    </p>
+                    <p class="content-text text-left">
+                        Harnessing these insights through the power of <span class="highlight-oracle">Oracle Cloud Infrastructure</span> and next-generation <span class="highlight-oracle">AI services</span>, we will unveil a groundbreaking fashion collection: a bold, visionary synthesis of where fashion has been—and where it’s about to go.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="slide5" class="slide bg-neutral-gradient">
+            <img src="https://www.oracle.com/a/ocom/img/oracle-logo.svg" alt="Oracle Logo" class="logo-oracle-global">
+            <div class="slide-content">
+                <p class="slide-header">Fashion Week 2025 • AI Capsule Collection</p>
+                <div class="card">
+                    <h3 class="roboto-flex text-2xl font-semibold mb-4 text-left text-gray-100">Execution</h3>
+                    <ul class="list-disc content-text space-y-1">
+                        <li>Collaborate with a <span class="highlight-concept">designer or fashion house</span> to select and refine the AI-generated designs.</li>
+                        <li>Real models are filmed, and AI-designed digital clothing (leveraging <span class="highlight-oracle">Oracle's generative AI capabilities</span>) is virtually overlaid with photorealistic precision.</li>
+                        <li>Share the final looks online with PR as <span class="highlight-concept">AR filters</span> on social media platforms, enabling immediate viral engagement.</li>
+                        <li>(Optional) Produce a limited-edition physical <span class="highlight-concept">Capsule Collection</span> in collaboration with a designer.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="slide6" class="slide bg-fashion-gradient">
+            <img src="https://www.oracle.com/a/ocom/img/oracle-logo.svg" alt="Oracle Logo" class="logo-oracle-global">
+            <div class="slide-content">
+                <p class="slide-header">Fashion Week 2025 • AI Capsule Collection</p>
+                <div class="card">
+                    <h3 class="roboto-flex text-2xl font-semibold mb-4 text-left text-gray-100">Impact</h3>
+                    <p class="content-text text-2xl font-medium leading-relaxed text-center">
+                        A visually stunning, highly shareable, and culturally relevant demonstration of <span class="highlight-oracle">Oracle’s AI capabilities</span> in creative industries.
+                    </p>
+                    <ul class="list-disc content-text mt-6 text-left space-y-1">
+                        <li>Positions Oracle at the <span class="font-semibold text-gray-200">forefront of innovation</span> in fashion tech.</li>
+                        <li>Generates <span class="font-semibold text-gray-200">massive organic reach</span> and media buzz.</li>
+                        <li>Creates tangible, <span class="font-semibold text-gray-200">interactive experiences</span> for a global audience.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="slide7" class="slide bg-amazon-gradient">
+            <img src="https://www.oracle.com/a/ocom/img/oracle-logo.svg" alt="Oracle Logo" class="logo-oracle-global">
+            <div class="slide-content">
+                <h2 class="roboto-flex section-title leading-tight">
+                    <span class="title-event" style="font-size: 1.2em; font-weight: 800;">COP30</span>
+                    <span class="title-concept" style="font-size: 0.9em; color: rgba(255,255,255,0.85); font-weight: 600;">Hear the Rainforest</span>
+                </h2>
+            </div>
+        </section>
+
+        <section id="slide8" class="slide bg-amazon-gradient">
+            <img src="https://www.oracle.com/a/ocom/img/oracle-logo.svg" alt="Oracle Logo" class="logo-oracle-global">
+            <div class="slide-content">
+                <p class="slide-header">COP30 • Hear the Rainforest</p>
+                <div class="card">
+                    <h3 class="roboto-flex text-2xl font-semibold mb-4 text-left text-gray-100">Concept</h3>
+                    <p class="content-text text-left">
+                        For the <span class="highlight-concept">COP30 Climate Conference</span> in Belém, Brazil (November 10–21, 2025), create a live musical concert based on <span class="highlight-concept">real-time sounds</span> from the Amazon rainforest—rain, birds, insects, and even tree-cutting.
+                    </p>
+                    <p class="content-text text-left">
+                        This project will use <span class="highlight-oracle">Oracle's robust data infrastructure</span> and <span class="highlight-oracle">AI</span> to translate the planet's pulse into a moving auditory experience.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="slide9" class="slide bg-neutral-gradient">
+            <img src="https://www.oracle.com/a/ocom/img/oracle-logo.svg" alt="Oracle Logo" class="logo-oracle-global">
+            <div class="slide-content">
+                <p class="slide-header">COP30 • Hear the Rainforest</p>
+                <div class="card">
+                    <h3 class="roboto-flex text-2xl font-semibold mb-4 text-left text-gray-100">Execution</h3>
+                    <ul class="list-disc content-text space-y-1">
+                        <li>Deploy a network of <span class="highlight-concept">acoustic sensors</span> throughout the rainforest, streaming data to <span class="highlight-oracle">Oracle Cloud</span>.</li>
+                        <li>Feed live audio streams into a <span class="highlight-oracle">generative music AI model</span> (developed and run on Oracle platforms) to produce a dynamic, real-time musical composition.</li>
+                        <li>Collaborate with a <span class="highlight-concept">renowned conductor or musician</span> to guide and enhance the AI-generated composition.</li>
+                        <li>A <span class="highlight-concept">remote choir</span> receives daily AI-generated musical scores and performs them.</li>
+                        <li>The performance is accompanied by <span class="highlight-concept">live visuals</span> from the Amazon rainforest, streamed via Oracle's infrastructure.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="slide10" class="slide bg-amazon-gradient">
+            <img src="https://www.oracle.com/a/ocom/img/oracle-logo.svg" alt="Oracle Logo" class="logo-oracle-global">
+            <div class="slide-content">
+                <p class="slide-header">COP30 • Hear the Rainforest</p>
+                <div class="card">
+                    <h3 class="roboto-flex text-2xl font-semibold mb-4 text-left text-gray-100">Impact</h3>
+                    <p class="content-text text-2xl font-medium leading-relaxed text-center">
+                        Daily musical performances powerfully communicating the state of the rainforest, highlighting <span class="highlight-oracle">Oracle’s commitment to sustainability and innovation</span>.
+                    </p>
+                    <ul class="list-disc content-text mt-6 text-left space-y-1">
+                        <li>Provides a unique, <span class="font-semibold text-gray-200">emotionally resonant voice</span> for a critical environmental issue at a global forum.</li>
+                        <li>Showcases <span class="highlight-oracle">Oracle's technology</span> as a tool for positive global change and data-driven storytelling.</li>
+                        <li>Generates significant <span class="font-semibold text-gray-200">international media coverage</span> and positions Oracle as a thought leader.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="slide11" class="slide bg-thankyou-gradient">
+            <img src="https://www.oracle.com/a/ocom/img/oracle-logo.svg" alt="Oracle Logo" class="logo-oracle-global">
+            <div class="slide-content flex flex-col justify-center items-center h-full">
+                <h2 class="roboto-flex section-title leading-tight mb-10">Thank you.</h2>
+                <img src="https://raw.githubusercontent.com/etaynaor/beza/main/images/logo-allenby-01.png" alt="Allenby Logo" class="logo-allenby-cover">
+            </div>
+        </section>
+
+    </div>
+    <script>
+        // No JavaScript needed for basic slide scrolling with snap, or for current animations.
+        // Content fade-in is handled by CSS.
+        // Gradient animation is handled by CSS.
+    </script>
+</body>
+</html>
