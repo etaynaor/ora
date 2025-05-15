@@ -102,6 +102,10 @@
             border: 1px solid rgba(255, 255, 255, 0.12); /* More subtle border */
             box-shadow: 0 12px 35px rgba(0, 0, 0, 0.35); /* Adjusted shadow */
         }
+        .card h3 { /* Card titles */
+            font-size: 1.75rem; /* Increased desktop card title size */
+        }
+
 
         .section-supertitle {
             font-size: 0.9rem;
@@ -112,44 +116,42 @@
             color: rgba(255,255,255,0.75);
         }
 
-        /* .presentation-main-headline class is no longer used for Slide 2 */
-
         .section-title {
             font-family: 'Roboto Flex', sans-serif;
-            font-size: 3rem; /* Slightly adjusted */
-            font-weight: 800; /* Bolder */
+            font-size: 3rem; 
+            font-weight: 800; 
             margin-bottom: 1.25rem;
             line-height: 1.15;
             color: rgba(255,255,255,0.95);
         }
         
         .title-event {
-            font-size: 0.9em; /* Relative to parent */
-            font-weight: 600; /* Semi-bold */
+            font-size: 0.9em; 
+            font-weight: 600; 
             display: block;
             color: rgba(255,255,255,0.85);
             margin-bottom: 0.3rem;
         }
         
         .title-concept {
-            font-size: 1.15em; /* Emphasize concept more */
-            font-weight: 800; /* Bolder */
+            font-size: 1.15em; 
+            font-weight: 800; 
             display: block;
             color: #FF453A; /* Brighter Oracle Red */
         }
 
-        .title-impact { /* New style for the third line of Fashion Week title */
+        .title-impact { 
             font-size: 0.8em;
             font-weight: 500;
             display: block;
             color: rgba(255,255,255,0.8);
-            margin-top: 0.25rem; /* Add some space above */
+            margin-top: 0.25rem; 
         }
 
 
         .slide-header {
             font-size: 1.1rem;
-            font-weight: 500; /* Medium weight */
+            font-weight: 500; 
             color: rgba(255,255,255,0.8);
             margin-bottom: 1.5rem;
             letter-spacing: 0.08em;
@@ -157,8 +159,8 @@
         }
 
         .section-subtitle {
-            font-size: 1.4rem; /* Adjusted size */
-            font-weight: 300; /* Light weight */
+            font-size: 1.4rem; 
+            font-weight: 300; 
             margin-bottom: 2.5rem;
             color: rgba(255,255,255,0.9);
             max-width: 750px;
@@ -168,63 +170,69 @@
         }
 
         .content-text {
-            font-size: 1.15rem; /* Slightly smaller for better density */
-            line-height: 1.75; /* Increased for readability */
+            font-size: 1.25rem; /* Increased base font size for card content on desktop */
+            line-height: 1.75; 
             margin-bottom: 1.25rem;
             color: rgba(255,255,255,0.85);
         }
         .content-text.text-2xl { /* For specific impact statements */
-            font-size: 1.5rem; /* Tailwind's 2xl is 1.5rem */
+            font-size: 1.65rem; /* Adjusted relative to new base */
             color: rgba(255,255,255,0.9);
         }
 
 
         .highlight-oracle {
-            color: #FF453A; /* Brighter Oracle Red */
-            font-weight: 600; /* Semi-bold */
+            color: #FF453A; 
+            font-weight: 600; 
         }
 
         .highlight-concept {
-            color: #00CFD4; /* Brighter Concept highlight */
-            font-weight: 500; /* Medium */
+            color: #00CFD4; 
+            font-weight: 500; 
         }
 
-        .logo-oracle-cover { /* For the main Oracle logo on the first slide */
+        .logo-oracle-cover { 
             height: 4.5rem; 
             filter: brightness(0) invert(1);
         }
 
         .logo-oracle-global {
             position: absolute;
-            top: 1.75rem; /* Adjusted position */
+            top: 1.75rem; 
             left: 1.75rem;
-            height: 2.25rem; /* Slightly smaller */
+            height: 2.25rem; 
             filter: brightness(0) invert(1);
-            z-index: 20; /* Ensure it's above the slide background/image */
+            z-index: 20; 
         }
 
         .logo-allenby-cover {
-            height: 5.5rem; /* Slightly adjusted */
+            height: 5.5rem; 
             filter: brightness(0) invert(1);
         }
 
         .list-disc {
             text-align: left;
-            margin-left: 1.5rem; /* Standard indent */
+            margin-left: 1.5rem; 
             list-style-type: disc;
             color: rgba(255,255,255,0.85);
         }
 
         .list-disc li {
-            margin-bottom: 1rem; /* Space between list items */
-            padding-left: 0.5rem; /* Space after disc */
+            margin-bottom: 1rem; 
+            padding-left: 0.5rem; 
+            font-size: 1.2rem; /* Increased list item font size for desktop */
         }
+
+        /* Ensuring Slide 2 image covers the area correctly */
+        #slide2 img.object-cover {
+            object-position: center center; /* Explicitly center the image */
+        }
+
 
         @media (max-width: 768px) {
             .slide {
-                padding: 3rem 1rem; /* Adjusted padding for smaller screens */
+                padding: 3rem 1rem; 
             }
-            /* .presentation-main-headline adjustments might not be needed if it's only on slide 2 and that's now an image */
             .section-title {
                 font-size: 2.2rem; 
             }
@@ -252,6 +260,13 @@
             .content-text.text-2xl {
                 font-size: 1.25rem;
             }
+            .card h3 { /* Card titles on mobile */
+                 font-size: 1.5rem; /* Tailwind's text-2xl */
+            }
+            .list-disc li {
+                font-size: 1.05rem; /* Revert list item font size for mobile */
+                margin-bottom: 0.75rem;
+            }
             .card {
                 padding: 1.5rem;
                 margin-top: 1.5rem;
@@ -271,9 +286,6 @@
             .list-disc {
                 margin-left: 1rem;
             }
-            .list-disc li {
-                margin-bottom: 0.75rem;
-            }
         }
     </style>
 </head>
@@ -288,8 +300,7 @@
             </div>
         </section>
 
-        <section id="slide2" class="slide bg-oracle-main-gradient p-0">
-            <img src="https://www.oracle.com/a/ocom/img/oracle-logo.svg" alt="Oracle Logo" class="logo-oracle-global">
+        <section id="slide2" class="slide bg-oracle-main-gradient p-0"> <img src="https://www.oracle.com/a/ocom/img/oracle-logo.svg" alt="Oracle Logo" class="logo-oracle-global">
             <img src="https://github.com/etaynaor/beza/blob/main/1.png?raw=true" alt="AI Driven Viral Cultural Moments" class="absolute inset-0 w-full h-full object-cover" style="z-index: 5;">
         </section>
 
@@ -309,8 +320,7 @@
             <div class="slide-content">
                 <p class="slide-header">Fashion Week 2025 • AI Capsule Collection</p>
                 <div class="card">
-                    <h3 class="roboto-flex text-2xl font-semibold mb-4 text-left text-gray-100">Concept</h3>
-                    <p class="content-text text-left">
+                    <h3 class="roboto-flex font-semibold mb-4 text-left text-gray-100">Concept</h3> <p class="content-text text-left">
                         During the <span class="highlight-concept">landmark fashion weeks of September 2025</span> — across 
                         <span class="highlight-oracle">New York, London, Milan, and Paris</span> — an 
                         AI trained on the entire arc of fashion history will 
@@ -329,9 +339,8 @@
             <div class="slide-content">
                 <p class="slide-header">Fashion Week 2025 • AI Capsule Collection</p>
                 <div class="card">
-                    <h3 class="roboto-flex text-2xl font-semibold mb-4 text-left text-gray-100">Execution</h3>
-                    <ul class="list-disc content-text space-y-1">
-                        <li>Collaborate with a <span class="highlight-concept">designer or fashion house</span> to select and refine the AI-generated designs.</li>
+                    <h3 class="roboto-flex font-semibold mb-4 text-left text-gray-100">Execution</h3>
+                    <ul class="list-disc content-text space-y-1"> <li>Collaborate with a <span class="highlight-concept">designer or fashion house</span> to select and refine the AI-generated designs.</li>
                         <li>Real models are filmed, and AI-designed digital clothing (leveraging <span class="highlight-oracle">Oracle's generative AI capabilities</span>) is virtually overlaid with photorealistic precision.</li>
                         <li>Share the final looks online with PR as <span class="highlight-concept">AR filters</span> on social media platforms, enabling immediate viral engagement.</li>
                         <li>(Optional) Produce a limited-edition physical <span class="highlight-concept">Capsule Collection</span> in collaboration with a designer.</li>
@@ -345,7 +354,7 @@
             <div class="slide-content">
                 <p class="slide-header">Fashion Week 2025 • AI Capsule Collection</p>
                 <div class="card">
-                    <h3 class="roboto-flex text-2xl font-semibold mb-4 text-left text-gray-100">Impact</h3>
+                    <h3 class="roboto-flex font-semibold mb-4 text-left text-gray-100">Impact</h3>
                     <p class="content-text text-2xl font-medium leading-relaxed text-center">
                         A visually stunning, highly shareable, and culturally relevant demonstration of <span class="highlight-oracle">Oracle’s AI capabilities</span> in creative industries.
                     </p>
@@ -373,7 +382,7 @@
             <div class="slide-content">
                 <p class="slide-header">COP30 • Hear the Rainforest</p>
                 <div class="card">
-                    <h3 class="roboto-flex text-2xl font-semibold mb-4 text-left text-gray-100">Concept</h3>
+                    <h3 class="roboto-flex font-semibold mb-4 text-left text-gray-100">Concept</h3>
                     <p class="content-text text-left">
                         For the <span class="highlight-concept">COP30 Climate Conference</span> in Belém, Brazil (November 10–21, 2025), create a live musical concert based on <span class="highlight-concept">real-time sounds</span> from the Amazon rainforest—rain, birds, insects, and even tree-cutting.
                     </p>
@@ -389,7 +398,7 @@
             <div class="slide-content">
                 <p class="slide-header">COP30 • Hear the Rainforest</p>
                 <div class="card">
-                    <h3 class="roboto-flex text-2xl font-semibold mb-4 text-left text-gray-100">Execution</h3>
+                    <h3 class="roboto-flex font-semibold mb-4 text-left text-gray-100">Execution</h3>
                     <ul class="list-disc content-text space-y-1">
                         <li>Deploy a network of <span class="highlight-concept">acoustic sensors</span> throughout the rainforest, streaming data to <span class="highlight-oracle">Oracle Cloud</span>.</li>
                         <li>Feed live audio streams into a <span class="highlight-oracle">generative music AI model</span> (developed and run on Oracle platforms) to produce a dynamic, real-time musical composition.</li>
@@ -406,7 +415,7 @@
             <div class="slide-content">
                 <p class="slide-header">COP30 • Hear the Rainforest</p>
                 <div class="card">
-                    <h3 class="roboto-flex text-2xl font-semibold mb-4 text-left text-gray-100">Impact</h3>
+                    <h3 class="roboto-flex font-semibold mb-4 text-left text-gray-100">Impact</h3>
                     <p class="content-text text-2xl font-medium leading-relaxed text-center">
                         Daily musical performances powerfully communicating the state of the rainforest, highlighting <span class="highlight-oracle">Oracle’s commitment to sustainability and innovation</span>.
                     </p>
