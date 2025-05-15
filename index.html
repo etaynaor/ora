@@ -233,12 +233,17 @@
         }
 
 
-        /* Ensuring Slide 2 image covers the area correctly */
+        /* Slide 2 specific styling */
         #slide2 {
             padding: 0 !important; /* Force no padding for slide 2 */
         }
-        #slide2 img.object-cover {
-            object-position: center center; /* Default for desktop */
+        .desktop-slide2-image {
+            display: block;
+            object-position: center center;
+        }
+        .mobile-slide2-image {
+            display: none;
+            object-position: center center; /* Default, will be overridden for mobile */
         }
 
 
@@ -246,9 +251,15 @@
             .slide {
                 padding: 3rem 1rem; 
             }
-            #slide2 img.object-cover {
-                 object-position: center 30%; /* Adjust for mobile to show more of the top, e.g. 30% from top */
+            /* Slide 2 image swap for mobile */
+            .desktop-slide2-image {
+                display: none !important;
             }
+            .mobile-slide2-image {
+                display: block !important;
+                object-position: center 30%; /* Adjust to show more of the top part on mobile */
+            }
+
             .section-title {
                 font-size: 2.2rem; 
             }
@@ -317,8 +328,10 @@
             </div>
         </section>
 
-        <section id="slide2" class="slide bg-oracle-main-gradient"> <img src="https://www.oracle.com/a/ocom/img/oracle-logo.svg" alt="Oracle Logo" class="logo-oracle-global">
-            <img src="https://github.com/etaynaor/beza/blob/main/1.png?raw=true" alt="AI Driven Viral Cultural Moments" class="absolute inset-0 w-full h-full object-cover" style="z-index: 5;">
+        <section id="slide2" class="slide bg-oracle-main-gradient"> 
+            <img src="https://www.oracle.com/a/ocom/img/oracle-logo.svg" alt="Oracle Logo" class="logo-oracle-global">
+            <img src="https://github.com/etaynaor/beza/blob/main/1.png?raw=true" alt="AI Driven Viral Cultural Moments" class="absolute inset-0 w-full h-full object-cover desktop-slide2-image" style="z-index: 5;">
+            <img src="https://github.com/etaynaor/ora/blob/main/1_mobile_letterboxed.png?raw=true" alt="AI Driven Viral Cultural Moments - Mobile" class="absolute inset-0 w-full h-full object-cover mobile-slide2-image" style="z-index: 5;">
         </section>
 
         <section id="slide3" class="slide bg-fashion-gradient">
@@ -337,7 +350,8 @@
             <div class="slide-content">
                 <p class="slide-header">Fashion Week 2025 • AI Capsule Collection</p>
                 <div class="card">
-                    <h3 class="roboto-flex font-semibold text-left">Concept</h3> <p class="content-text text-left">
+                    <h3 class="roboto-flex font-semibold text-left">Concept</h3> 
+                    <p class="content-text text-left">
                         During the <span class="highlight-concept">landmark fashion weeks of September 2025</span> — across 
                         <span class="highlight-oracle">New York, London, Milan, and Paris</span> — an 
                         AI trained on the entire arc of fashion history will 
@@ -356,7 +370,8 @@
             <div class="slide-content">
                 <p class="slide-header">Fashion Week 2025 • AI Capsule Collection</p>
                 <div class="card">
-                    <h3 class="roboto-flex font-semibold text-left">Execution</h3> <ul class="list-disc space-y-1"> 
+                    <h3 class="roboto-flex font-semibold text-left">Execution</h3> 
+                    <ul class="list-disc space-y-1"> 
                         <li>Collaborate with a <span class="highlight-concept">designer or fashion house</span> to select and refine the AI-generated designs.</li>
                         <li>Real models are filmed, and AI-designed digital clothing (leveraging <span class="highlight-oracle">Oracle's generative AI capabilities</span>) is virtually overlaid with photorealistic precision.</li>
                         <li>Share the final looks online with PR as <span class="highlight-concept">AR filters</span> on social media platforms, enabling immediate viral engagement.</li>
@@ -371,7 +386,8 @@
             <div class="slide-content">
                 <p class="slide-header">Fashion Week 2025 • AI Capsule Collection</p>
                 <div class="card">
-                    <h3 class="roboto-flex font-semibold text-left">Impact</h3> <p class="content-text text-2xl font-medium leading-relaxed text-center">
+                    <h3 class="roboto-flex font-semibold text-left">Impact</h3> 
+                    <p class="content-text text-2xl font-medium leading-relaxed text-center">
                         A visually stunning, highly shareable, and culturally relevant demonstration of <span class="highlight-oracle">Oracle’s AI capabilities</span> in creative industries.
                     </p>
                     <ul class="list-disc mt-6 text-left space-y-1"> 
@@ -398,7 +414,8 @@
             <div class="slide-content">
                 <p class="slide-header">COP30 • Hear the Rainforest</p>
                 <div class="card">
-                    <h3 class="roboto-flex font-semibold text-left">Concept</h3> <p class="content-text text-left">
+                    <h3 class="roboto-flex font-semibold text-left">Concept</h3> 
+                    <p class="content-text text-left">
                         For the <span class="highlight-concept">COP30 Climate Conference</span> in Belém, Brazil (November 10–21, 2025), create a live musical concert based on <span class="highlight-concept">real-time sounds</span> from the Amazon rainforest—rain, birds, insects, and even tree-cutting.
                     </p>
                     <p class="content-text text-left">
@@ -413,7 +430,8 @@
             <div class="slide-content">
                 <p class="slide-header">COP30 • Hear the Rainforest</p>
                 <div class="card">
-                    <h3 class="roboto-flex font-semibold text-left">Execution</h3> <ul class="list-disc space-y-1"> 
+                    <h3 class="roboto-flex font-semibold text-left">Execution</h3> 
+                    <ul class="list-disc space-y-1"> 
                         <li>Deploy a network of <span class="highlight-concept">acoustic sensors</span> throughout the rainforest, streaming data to <span class="highlight-oracle">Oracle Cloud</span>.</li>
                         <li>Feed live audio streams into a <span class="highlight-oracle">generative music AI model</span> (developed and run on Oracle platforms) to produce a dynamic, real-time musical composition.</li>
                         <li>Collaborate with a <span class="highlight-concept">renowned conductor or musician</span> to guide and enhance the AI-generated composition.</li>
@@ -429,7 +447,8 @@
             <div class="slide-content">
                 <p class="slide-header">COP30 • Hear the Rainforest</p>
                 <div class="card">
-                    <h3 class="roboto-flex font-semibold text-left">Impact</h3> <p class="content-text text-2xl font-medium leading-relaxed text-center">
+                    <h3 class="roboto-flex font-semibold text-left">Impact</h3> 
+                    <p class="content-text text-2xl font-medium leading-relaxed text-center">
                         Daily musical performances powerfully communicating the state of the rainforest, highlighting <span class="highlight-oracle">Oracle’s commitment to sustainability and innovation</span>.
                     </p>
                     <ul class="list-disc mt-6 text-left space-y-1"> 
